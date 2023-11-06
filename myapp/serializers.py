@@ -1,4 +1,4 @@
-from djangorestframework import serializers
+from rest_framework import serializers
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 
 class ProfileSerializer(serializers.ModelSerializer):
