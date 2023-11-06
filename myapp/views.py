@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import status
+from djangorestframework.response import Response
+from djangorestframework.views import APIView
+from djangorestframework import status
 from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
 
 # Includes Profile, SocialMediaLink, Image
