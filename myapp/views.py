@@ -6,7 +6,7 @@ from .models import Profile, SocialMediaLink, Project, Skill, Education, Experie
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import ProfileSerializer, SocialSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
+from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
 
 # Includes Profile, SocialMediaLink, Image
 # Soon, I am hoping to add redirection links to the other pages.
@@ -17,7 +17,7 @@ class IndexAPIView(APIView):
         p_serializer = ProfileSerializer(p_data, many=True)
 
         so_data = SocialMediaLink.objects.all()
-        so_serializer = SocialSerializer(so_data, many=True)
+        so_serializer = SMLSerializer(so_data, many=True)
 
         i_data = Image.objects.all()
         i_serializer = ImageSerializer(i_data, many=True)
