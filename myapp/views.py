@@ -11,6 +11,9 @@ from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, Sk
 # Includes Profile, SocialMediaLink, Image
 # Soon, I am hoping to add redirection links to the other pages.
 class IndexAPIView(APIView):
+    queryset = None
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
     def get(self, request):
         logger.debug('Debug message for index view.')
         p_data = Profile.objects.all()
@@ -31,6 +34,9 @@ class IndexAPIView(APIView):
 
 # Includes Skill, Education and Experience models
 class ProfAPIView(APIView):
+    queryset = None
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    
     def get(self, request):
         s_data = Skill.objects.all()
         s_serializer = SkillSerializer(s_data, many=True)
@@ -50,6 +56,9 @@ class ProfAPIView(APIView):
     
 # Includes Project Model
 class ProjectAPIView(APIView):
+    queryset = None
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
     def get(self, request):
         queryset = Project.objects.all()
         serializer = ProjectSerializer(queryset, many=True)
