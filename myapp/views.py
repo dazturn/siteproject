@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
@@ -36,7 +37,7 @@ class IndexAPIView(APIView):
 class ProfAPIView(APIView):
     queryset = None
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
-    
+
     def get(self, request):
         s_data = Skill.objects.all()
         s_serializer = SkillSerializer(s_data, many=True)
