@@ -6,36 +6,50 @@ from .models import Profile, SocialMediaLink, Project, Skill, Education, Experie
 from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
 
 class ProfileListView(ListAPIView):
-    queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
+    def get_queryset(self):
+        return Profile.objects.all()
+
 class SocialMediaLinkListView(ListAPIView):
-    queryset = SocialMediaLink.objects.all()
     serializer_class = SMLSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
+    def get_queryset(self):
+        return SocialMediaLink.objects.all()
+
 class ProjectListView(ListAPIView):
-    queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
+    def get_queryset(self):
+        return Project.objects.all()
+
 class SkillListView(ListAPIView):
-    queryset = Skill.objects.all()
     serializer_class = SkillSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
+    def get_queryset(self):
+        return Skill.objects.all()
+
 class EducationListView(ListAPIView):
-    queryset = Education.objects.all()
     serializer_class = EducationSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
+    def get_queryset(self):
+        return Education.objects.all()
+
 class ExperienceListView(ListAPIView):
-    queryset = Experience.objects.all()
     serializer_class = ExperienceSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
-class ImageListView(ListAPIView):
-    queryset = Image.objects.all()
+    def get_queryset(self):
+        return Experience.objects.all()
+
+class ImageViewList(ListAPIView):
     serializer_class = ImageSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+    def get_queryset(self):
+        return Image.objects.all()
