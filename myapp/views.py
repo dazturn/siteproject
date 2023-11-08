@@ -1,66 +1,41 @@
-from django.shortcuts import render
-
-from django.http import HttpResponse
-from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
-
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
-from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework.response import Response
+from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
 
-# Includes Profile, SocialMediaLink, Image
-# Soon, I am hoping to add redirection links to the other pages.
-class IndexAPIView(APIView):
-    queryset = None
+class ProfileListView(ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
-    def get(self, request):
-        logger.debug('Debug message for index view.')
-        p_data = Profile.objects.all()
-        p_serializer = ProfileSerializer(p_data, many=True)
-
-        so_data = SocialMediaLink.objects.all()
-        so_serializer = SMLSerializer(so_data, many=True)
-
-        i_data = Image.objects.all()
-        i_serializer = ImageSerializer(i_data, many=True)
-
-        index_data = {
-            'p_data': p_serializer.data,
-            'so_data': so_serializer.data,
-            'i_data': i_serializer.data,
-        }
-        return Response(index_data, status.HTTP_200_OK)
-
-# Includes Skill, Education and Experience models
-class ProfAPIView(APIView):
-    queryset = None
+class SocialMediaLinkListView(ListAPIView):
+    queryset = SocialMediaLink.objects.all()
+    serializer_class = SMLSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
-    def get(self, request):
-        s_data = Skill.objects.all()
-        s_serializer = SkillSerializer(s_data, many=True)
-
-        ed_data = Education.objects.all()
-        ed_serializer = EducationSerializer(ed_data, many=True)
-
-        ex_data = Experience.objects.all()
-        ex_serializer = ExperienceSerializer(ex_data, many=True)
-
-        chosen_data = {
-            's_data': s_serializer.data,
-            'ed_data': ed_serializer.data,
-            'ex_data': ex_serializer.data,
-        }
-        return Response(chosen_data, status.HTTP_200_OK)
-    
-# Includes Project Model
-class ProjectAPIView(APIView):
-    queryset = None
+class ProjectListView(ListAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
-    def get(self, request):
-        queryset = Project.objects.all()
-        serializer = ProjectSerializer(queryset, many=True)
-        return Response(serializer.data, status.HTTP_200_OK)
+class SkillListView(ListAPIView):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+class EducationListView(ListAPIView):
+    queryset = Education.objects.all()
+    serializer_class = EducationSerializer
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+class ExperienceListView(ListAPIView):
+    queryset = Experience.objects.all()
+    serializer_class = ExperienceSerializer
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+class ImageListView(ListAPIView):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
