@@ -514,8 +514,8 @@ body.popup .submit-row {
 }
 
 .related-lookup {
-    width: 1rem;
-    height: 1rem;
+    /* width: 1rem;
+    height: 1rem; */
     background-image: url(../img/search.svg);
 }
 
