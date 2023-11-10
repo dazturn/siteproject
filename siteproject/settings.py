@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # Serves collected static files from this folder name
-STATIC_URL = '/static/'
+STATIC_URL = '/collected_static/'
 
 # Static files to be collected
 STATICFILES_DIRS = [
