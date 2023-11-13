@@ -1,4 +1,3 @@
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,9 +5,7 @@ from .models import Profile, SocialMediaLink, Project, Skill, Education, Experie
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
-class IndexAPIView(APIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
-    
+class IndexAPIView(APIView):   
     def get(self, request, format=None):
         profiles = Profile.objects.all()
         sml = SocialMediaLink.objects.all()
@@ -28,8 +25,6 @@ class IndexAPIView(APIView):
 
 # Skill, Education and Experience views.
 class ProfAPIView(APIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
-
     def get(self, request, format=None):
         skills = Skill.objects.all()
         education = Education.objects.all()
@@ -49,7 +44,6 @@ class ProfAPIView(APIView):
 # The only view for this URL case so far.
 class ProjectAPIView(ListAPIView):
     serializer_class = ProjectSerializer
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
     def get_queryset(self):
         return Project.objects.all()
