@@ -1,13 +1,13 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
 class IndexAPIView(ListAPIView):   
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = None
 
     def get(self, request, format=None):
@@ -29,7 +29,7 @@ class IndexAPIView(ListAPIView):
 
 # Skill, Education and Experience views.
 class ProfAPIView(ListAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = None
 
     def get(self, request, format=None):
