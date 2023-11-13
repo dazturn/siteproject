@@ -1,13 +1,14 @@
 from rest_framework.generics import ListAPIView
-from rest_framework.views import APIView
-
 from rest_framework.response import Response
 
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
-class IndexAPIView(APIView):   
+class IndexAPIView(ListAPIView):   
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    queryset = None
+
     def get(self, request, format=None):
         profiles = Profile.objects.all()
         sml = SocialMediaLink.objects.all()
@@ -26,7 +27,10 @@ class IndexAPIView(APIView):
         return Response(data)
 
 # Skill, Education and Experience views.
-class ProfAPIView(APIView):
+class ProfAPIView(ListAPIView):
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    queryset = None
+
     def get(self, request, format=None):
         skills = Skill.objects.all()
         education = Education.objects.all()
