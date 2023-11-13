@@ -36,14 +36,3 @@ class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
         fields = '__all__'
-
-# Grouped serializers
-class IndexSerializer(serializers.Serializer):
-    profile = ProfileSerializer(many=True)
-    sml = SMLSerializer(many=True)
-    images = ImageSerializer(many=True)
-
-class ProfSerializer(serializers.Serializer):
-    skills = SkillSerializer(many=True)
-    education = EducationSerializer(many=True)
-    experience = ExperienceSerializer(many=True)

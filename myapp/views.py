@@ -1,31 +1,51 @@
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.generics import ListAPIView
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
+from rest_framework import Response
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
-from .serializers import IndexSerializer, ProfSerializer, ProjectSerializer
+from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
 class IndexAPIView(ModelViewSet):
-    serializer_class = IndexSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
-
-    def get_queryset(self):
+    
+    def get(self, request, format=None):
         profiles = Profile.objects.all()
         sml = SocialMediaLink.objects.all()
         images = Image.objects.all()
-        return {'profiles': profiles, 'sml': sml, 'images': images}
+
+        profile_serializer = ProfileSeralizer(profiles, many=True)
+        sml_serializer = SMLSerializer(sml, many=True)
+        images_serializer = ImageSerializer(images, many=True)
+
+        data = {
+            'profiles': profile_serializer.data,
+            'sml': sml_serializer.data,
+            'images': images_serializer.data
+        }
+
+        return Response(data)
 
 # Skill, Education and Experience views.
-class ProfAPIView(ModelViewSet):
-    serializer_class = ProfSerializer
+class ProfAPIView(APIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
-    def get_queryset(self):
+    def get(self, request, format=None):
         skills = Skill.objects.all()
         education = Education.objects.all()
         experience = Experience.objects.all()
-        return {'skills': skills, 'education': education, 'experience': experience}
 
+        skills_serializer = SkillSerializer(skills, many=True)
+        education_serializer = EducationSerializer(education, many=True)
+        experience_serializer = ExperienceSerializer(experience, many=True)
+
+        data = {
+            'skills': skills_serializer.data,
+            'education': education_serializer.data,
+            'experience': experience_serializer.data
+        }
+
+        return Response(data)
 # The only view for this URL case so far.
 class ProjectAPIView(ListAPIView):
     serializer_class = ProjectSerializer
