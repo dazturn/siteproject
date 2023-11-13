@@ -1,7 +1,7 @@
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-from rest_framework import Response
+from rest_framework.response import Response
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
