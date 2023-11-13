@@ -16,7 +16,7 @@ class IndexAPIView(ListAPIView):
 
 # Skill, Education and Experience views.
 class ProfAPIView(ListAPIView):
-    serializer_class = SkillSerializer  # Use SkillSerializer or create a combined serializer for Skill, Education, and Experience
+    serializer_class = SkillSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
     def get_queryset(self):
