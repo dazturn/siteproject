@@ -1,10 +1,11 @@
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import IndexSerializer, ProfSerializer, ProjectSerializer
 
 # Profile, Social Media Link and Image views.
-class IndexAPIView(ListAPIView):
+class IndexAPIView(ModelViewSet):
     serializer_class = IndexSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
@@ -15,7 +16,7 @@ class IndexAPIView(ListAPIView):
         return {'profiles': profiles, 'sml': sml, 'images': images}
 
 # Skill, Education and Experience views.
-class ProfAPIView(ListAPIView):
+class ProfAPIView(ModelViewSet):
     serializer_class = ProfSerializer
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
 
