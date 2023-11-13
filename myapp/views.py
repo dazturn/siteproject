@@ -1,7 +1,5 @@
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.generics import ListAPIView
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer, ImageSerializer
 
@@ -14,7 +12,7 @@ class IndexAPIView(ListAPIView):
         profiles = Profile.objects.all()
         sml = SocialMediaLink.objects.all()
         images = Image.objects.all()
-        return profiles.union(sml, images)
+        return {'profiles': profiles, 'sml': sml, 'images': images}
 
 # Skill, Education and Experience views.
 class ProfAPIView(ListAPIView):
@@ -25,7 +23,7 @@ class ProfAPIView(ListAPIView):
         skills = Skill.objects.all()
         education = Education.objects.all()
         experience = Experience.objects.all()
-        return skills.union(education, experience)
+        return {'skills': skills, 'education': education, 'experience': experience}
 
 # The only view for this URL case so far.
 class ProjectAPIView(ListAPIView):
