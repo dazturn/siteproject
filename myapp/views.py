@@ -6,7 +6,7 @@ from .models import Profile, SocialMediaLink, Project, Skill, Education, Experie
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
-class IndexAPIView(ModelViewSet):
+class IndexAPIView(APIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     
     def get(self, request, format=None):
