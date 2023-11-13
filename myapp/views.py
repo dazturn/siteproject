@@ -1,6 +1,8 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
+
 from rest_framework.response import Response
+
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
@@ -11,7 +13,7 @@ class IndexAPIView(APIView):
         sml = SocialMediaLink.objects.all()
         images = Image.objects.all()
 
-        profile_serializer = ProfileSeralizer(profiles, many=True)
+        profile_serializer = ProfileSerializer(profiles, many=True)
         sml_serializer = SMLSerializer(sml, many=True)
         images_serializer = ImageSerializer(images, many=True)
 
@@ -41,6 +43,7 @@ class ProfAPIView(APIView):
         }
 
         return Response(data)
+
 # The only view for this URL case so far.
 class ProjectAPIView(ListAPIView):
     serializer_class = ProjectSerializer
