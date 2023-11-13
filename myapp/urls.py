@@ -1,13 +1,13 @@
 from django.urls import path
-from . import views
+from .views import IndexAPIView, ProfAPIView, ProjectAPIView
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.IndexAPIView.as_view(), name='home'),
-    path('aptitude/', views.ProfAPIView.as_view(), name='aptitude'),
-    path('projects/', views.ProjectAPIView.as_view(), name='projects'),
+    path('', IndexAPIView.as_view(), name='home'),
+    path('aptitude/', ProfAPIView.as_view(), name='aptitude'),
+    path('projects/', ProjectAPIView.as_view(), name='projects'),
 ]
 
 # Static files to serve
