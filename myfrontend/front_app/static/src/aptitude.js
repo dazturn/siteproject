@@ -3,7 +3,7 @@ import './index.css';
 import App from './App';
 import axios from 'axios';
 
-const Index = () => {
+const Aptitude = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ return (
   );
 };
 
-export default Index;
+export default Aptitude;

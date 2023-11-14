@@ -3,13 +3,13 @@ import './index.css';
 import App from './App';
 import axios from 'axios';
 
-const Index = () => {
+const Projects = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000');
+        const response = await axios.get('http://localhost:8000/projects');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -26,4 +26,4 @@ return (
   );
 };
 
-export default Index;
+export default Projects;

@@ -2,16 +2,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from django.shortcuts import render
-from django.http import HttpResponse
-
 from .models import Profile, SocialMediaLink, Project, Skill, Education, Experience, Image
 from .serializers import ProfileSerializer, SMLSerializer, ImageSerializer, ProjectSerializer, SkillSerializer, EducationSerializer, ExperienceSerializer
 
 # Profile, Social Media Link and Image views.
 class IndexAPIView(APIView):
     # View queryset creation.
-    def get_data(self, request):
+    def get(self, request):
         profiles = Profile.objects.all()
         sml = SocialMediaLink.objects.all()
         images = Image.objects.all()
@@ -26,12 +23,12 @@ class IndexAPIView(APIView):
             'images': images_serializer.data
         }
 
-        return Response(data, status.HTTP_200_OK)
+        return Response(data, status=status.HTTP_200_OK)
 
 # Skill, Education and Experience views.
 class ProfAPIView(APIView):
     #View queryset creation.
-    def get_data(self, request):
+    def get(self, request):
         skills = Skill.objects.all()
         education = Education.objects.all()
         experience = Experience.objects.all()
