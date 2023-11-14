@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import './index.css';
-import App from './App';
+import App from '../App';
 import axios from 'axios';
 
 const Aptitude = () => {
