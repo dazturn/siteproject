@@ -10,9 +10,9 @@ const AppRouter = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" exact component={Index} />
-                <Route path="/aptitude" component={Aptitude} />
-                <Route path="projects" component={Projects}/>
+                <Route path="/" exact element={<Index />} />
+                <Route path="/aptitude" element={<Aptitude />} />
+                <Route path="/projects" element={<Projects />}/>
             </Routes>
         </Router>
     );
