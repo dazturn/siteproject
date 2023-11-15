@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom'
-import AppRouter from './appRouter';
+import AppRouter from './components/appRouter';
 
 
 const root = document.getElementById('root');
