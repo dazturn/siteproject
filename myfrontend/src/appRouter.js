@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ReactDOM from 'react-dom'
 
 import Index from './index';
 import Aptitude from './aptitude';
@@ -16,5 +17,13 @@ const AppRouter = () => {
         </Router>
     );
 };
+
+// The following section creates the app's entrypoint.
+ReactDOM.render(
+    <React.StrictMode>
+        <AppRouter />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 export default AppRouter;
