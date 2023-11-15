@@ -133,7 +133,7 @@ STATIC_URL = '/collected_static/'
 
 # Static files to be collected
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'myapp', 'static')
+    os.path.join(BASE_DIR, 'myapp', 'myfrontend/public'),
 ]
 
 #Where collected files will be stored
