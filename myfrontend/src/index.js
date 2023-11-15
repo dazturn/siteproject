@@ -1,12 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom'
 import AppRouter from './appRouter';
 
 
+const root = document.getElementById('root');
 
-ReactDOM.render(
-    <React.StrictMode>
-        <AppRouter />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+const rootInstance = createRoot(root);
+rootInstance.render(<AppRouter />);

@@ -18,12 +18,4 @@ const AppRouter = () => {
     );
 };
 
-// The following section creates the app's entrypoint.
-ReactDOM.render(
-    <React.StrictMode>
-        <AppRouter />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
-
 export default AppRouter;
