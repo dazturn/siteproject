@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import './index.css';
-import App from './App';
 import axios from 'axios';
 
 const Aptitude = () => {
@@ -21,7 +20,12 @@ const Aptitude = () => {
 
 return (
   <div>
-    <App />
+    <h1>Welcome to my Aptitude Page!</h1>
+    {data.map((item) => (
+      <div key={item.id}>
+        <h2>{item.institution}</h2>
+      </div>
+    ))}
   </div>
   );
 };

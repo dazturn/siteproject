@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import './index.css';
-import App from './App';
 import axios from 'axios';
 
 const Projects = () => {
@@ -21,7 +20,6 @@ const Projects = () => {
 
 return (
   <div>
-    <App />
     <h1>Welcome to my Project Page!</h1>
     {data.map((item) => (
       <div key={item.id}>

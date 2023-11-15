@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import './index.css';
-import App from './App';
 import axios from 'axios';
 
 const Index = () => {
@@ -21,7 +20,6 @@ const Index = () => {
 
 return (
   <div>
-    <App />
     <h1>Welcome to my Portfolio Homepage!</h1>
     {data.map((item) => (
       <div key={item.id}>
