@@ -26,7 +26,7 @@ return (
     {data.map((item) => (
       <div key={item.id}>
         <h2>{item.owner_name}</h2>
-        <img src={item.image} />
+        <img src={item.image} alt="" />
         <p>{item.owner_bio}</p>
         <p>Contact me Today: {`${item.contact_info} ${item.platform}`}</p>
       </div>
