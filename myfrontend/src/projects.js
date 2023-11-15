@@ -21,7 +21,16 @@ const Projects = () => {
 
 return (
   <div>
-
+    <App />
+    <h1>Welcome to my Project Page!</h1>
+    {data.map((item) => (
+      <div key={item.id}>
+        <h2>{item.pg_title}</h2>
+        <h3>{item.date_completed}</h3>
+        <p>{item.pj_description}</p>
+        <p>Contact me Today: {`${item.contact_info} ${item.platform}`}</p>
+      </div>
+    ))}
   </div>
   );
 };

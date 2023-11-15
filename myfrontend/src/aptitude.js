@@ -21,7 +21,7 @@ const Aptitude = () => {
 
 return (
   <div>
-
+    <App />
   </div>
   );
 };

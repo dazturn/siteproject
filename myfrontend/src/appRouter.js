@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Index from '.';
+import Index from './index';
 import Aptitude from './aptitude';
 import Projects from './projects';
 
@@ -15,3 +15,5 @@ const AppRouter = () => {
         </Router>
     );
 };
+
+export default AppRouter;

@@ -21,6 +21,7 @@ const Index = () => {
 
 return (
   <div>
+    <App />
     <h1>Welcome to my Portfolio Homepage!</h1>
     {data.map((item) => (
       <div key={item.id}>
