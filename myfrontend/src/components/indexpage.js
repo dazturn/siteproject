@@ -39,7 +39,7 @@ const Indexpage = () => {
           <div key={socialMedia.id}>
             <p>Platform: {socialMedia.platform}</p>
             <p>URL: {socialMedia.url}</p>
-            <img src={socialMedia.icon} alt="" />
+            <img src={`http://localhost:8000${socialMedia.icon}`} alt="" />
           </div>
         ))}
       </div>
@@ -49,7 +49,7 @@ const Indexpage = () => {
         {data.images.map((image) => (
           <div key={image.id}>
             <p>Image Title: {image.image_title}</p>
-            <img src={image.image} alt="" />
+            <img src={`http://localhost:8000${image.image}`} alt="" />
           </div>
         ))}
       </div>
