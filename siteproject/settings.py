@@ -140,6 +140,10 @@ STATICFILES_DIRS = [
 #Where collected files will be stored
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
+# Serves media files from this folder name
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
